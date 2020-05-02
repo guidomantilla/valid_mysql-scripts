@@ -1,7 +1,5 @@
-DROP DATABASE IF EXISTS `valid-security`;
-CREATE DATABASE `valid-security` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE IF NOT EXISTS `valid-security` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `valid-security`;
-
 -- MySQL dump 10.13  Distrib 8.0.16, for Linux (x86_64)
 --
 -- Host: localhost    Database: valid-security
@@ -45,9 +43,9 @@ LOCK TABLES `authorities` WRITE;
 /*!40000 ALTER TABLE `authorities`
     DISABLE KEYS */;
 INSERT INTO `authorities`
-VALUES ('Mike', 'role_user'),
+VALUES ('Admin', 'role_admin'),
        ('Jon', 'role_user'),
-       ('Admin', 'role_admin');
+       ('Mike', 'role_user');
 /*!40000 ALTER TABLE `authorities`
     ENABLE KEYS */;
 UNLOCK TABLES;
@@ -88,7 +86,7 @@ LOCK TABLES `oauth_client_details` WRITE;
 INSERT INTO `oauth_client_details`
 VALUES ('VALID_MOVIE_RENTAL_WEB', 'USER_CLIENT_RESOURCE,USER_ADMIN_RESOURCE',
         '{bcrypt}$2y$12$THl3orcO8tWrH/Sc6R4r7.WSsMzTAZ1c/cIaA.40eahX.KNBluCB2', 'role_admin,role_user',
-        'authorization_code,password,refresh_token,implicit', NULL, NULL, 900, 180, '{}', NULL);
+        'authorization_code,password,refresh_token,implicit', '', NULL, 900, 180, '{}', 'true');
 /*!40000 ALTER TABLE `oauth_client_details`
     ENABLE KEYS */;
 UNLOCK TABLES;
@@ -119,9 +117,9 @@ LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users`
     DISABLE KEYS */;
 INSERT INTO `users`
-VALUES ('Mike', '{bcrypt}$2a$10$EOs8VROb14e7ZnydvXECA.4LoIhPOoFHKvVF/iBZ/ker17Eocz4Vi', 1),
+VALUES ('Admin', '{bcrypt}$2a$10$EOs8VROb14e7ZnydvXECA.4LoIhPOoFHKvVF/iBZ/ker17Eocz4Vi', 1),
        ('Jon', '{bcrypt}$2a$10$EOs8VROb14e7ZnydvXECA.4LoIhPOoFHKvVF/iBZ/ker17Eocz4Vi', 1),
-       ('Admin', '{bcrypt}$2a$10$EOs8VROb14e7ZnydvXECA.4LoIhPOoFHKvVF/iBZ/ker17Eocz4Vi', 1);
+       ('Mike', '{bcrypt}$2a$10$EOs8VROb14e7ZnydvXECA.4LoIhPOoFHKvVF/iBZ/ker17Eocz4Vi', 1);
 /*!40000 ALTER TABLE `users`
     ENABLE KEYS */;
 UNLOCK TABLES;
@@ -135,4 +133,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION = @OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES = @OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-30 21:17:22
+-- Dump completed on 2020-05-02 11:18:12
